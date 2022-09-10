@@ -2,7 +2,13 @@ namespace CREATION_TOOLS
 {
     public struct sOBJETIVES
     {
-        public int type;
+        public QUEST_OBJETIVES objetive;
+        public int amount;
+    }
+
+    public struct sCURRENCY
+    {
+        public GAME_CURRENCY currency;
         public int amount;
     }
 
@@ -10,6 +16,6 @@ namespace CREATION_TOOLS
     {
         public int itemID;
         public int amount;
-        public int chance;
+        public float chance;
     }
 }
