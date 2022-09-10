@@ -10,7 +10,8 @@ namespace CREATION_TOOLS
     {
         MAX_OBJETIVE_NUM = 5,
         MAX_LOOT_SLOT_NUM = 10,
-        MAX_CURRENCY_REWARDS = 4
+        MAX_CURRENCY_REWARDS = 4,
+        MAX_QUEST_NAME_LENGTH = 36
     }
 
     public enum TOOL_CONFIG
@@ -20,6 +21,7 @@ namespace CREATION_TOOLS
         MAX_REWARD_ITEM_AMOUNT = 99
     }
 
+    #region QUEST
     public enum QUEST_TYPE
     {
         Leveling = 0,
@@ -65,8 +67,10 @@ namespace CREATION_TOOLS
         Shield_Destroyed = 28,
         Spawn_Event_Monsters = 29
     };
+    #endregion
 
 
+    #region GAME
     public enum GAME_CURRENCY {
         None = 0,
         Silver = 1,
@@ -76,4 +80,5 @@ namespace CREATION_TOOLS
         Shattered_Fragments = 5,
         Holy_Wood = 6
     }
+    #endregion 
 }
