@@ -11,7 +11,7 @@ namespace CREATION_TOOLS
         MAX_OBJETIVE_NUM = 5,
         MAX_LOOT_SLOT_NUM = 10,
         MAX_CURRENCY_REWARDS = 4,
-        MAX_QUEST_NAME_LENGTH = 36
+        MAX_QUEST_NAME_LENGTH = 40
     }
 
     public enum TOOL_CONFIG

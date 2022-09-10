@@ -11,13 +11,33 @@ namespace CREATION_TOOLS
     public struct QUEST_DATA
     {
         public int index;
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_QUEST_NAME_LENGTH)]
-        public string name;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_QUEST_NAME_LENGTH)]
+        public byte[] name;
         public QUEST_TYPE type;
         public int level;
         public QUEST_NPC_TYPE NPCType;
-        public int avatarExperience;
-        public int petExperience;
+        public float avatarExperience;
+        public float petExperience;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_CURRENCY_REWARDS)]
+        public sCURRENCY[] currencyReward;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_OBJETIVE_NUM)]
+        public sOBJETIVES[] objetiveData;
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_LOOT_SLOT_NUM)]
+        public sLOOT[] lootData;
+    }
+
+    [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
+    [Serializable]
+    public struct TEST_QUEST_DATA
+    {
+        public int index;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_QUEST_NAME_LENGTH)]
+        public byte[] name;
+        public QUEST_TYPE type;
+        public int level;
+        public QUEST_NPC_TYPE NPCType;
+        public float avatarExperience;
+        public float petExperience;
         [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_CURRENCY_REWARDS)]
         public sCURRENCY[] currencyReward;
         [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.Struct, SizeConst = (int)QUEST_SYSTEM_CONFIG.MAX_OBJETIVE_NUM)]
