@@ -27,4 +27,15 @@ public static class Serialization
 
         return str;
     }
+
+    public static int SizeOf<T>() where T : struct
+    {
+        T str = default(T);
+        int size = Marshal.SizeOf(str);
+        return size;
+    }
+
+    public static int SizeOf(object tStruct) {
+        return Marshal.SizeOf(tStruct);
+    }
 }
