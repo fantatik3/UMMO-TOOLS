@@ -28,6 +28,7 @@ namespace CREATION_TOOLS
     public struct sOBJETIVES
     {
         public QUEST_OBJETIVES objetive;
+        public int value;
         public int amount;
     }
 
