@@ -57,9 +57,9 @@ public class EditorGUISplitView
 		Rect resizeHandleRect;
 
 		if(splitDirection == Direction.Horizontal)
-			resizeHandleRect = new Rect (availableRect.width * splitNormalizedPosition, availableRect.y, 5f, availableRect.height);
+			resizeHandleRect = new Rect (availableRect.width * splitNormalizedPosition, availableRect.y, 2f, availableRect.height);
 		else
-			resizeHandleRect = new Rect (availableRect.x,availableRect.height * splitNormalizedPosition, availableRect.width, 5f);
+			resizeHandleRect = new Rect (availableRect.x,availableRect.height * splitNormalizedPosition, availableRect.width, 2f);
 
 		GUI.DrawTexture(resizeHandleRect,EditorGUIUtility.whiteTexture);
 
