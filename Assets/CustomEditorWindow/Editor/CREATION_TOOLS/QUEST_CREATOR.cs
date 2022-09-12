@@ -20,7 +20,8 @@ namespace CREATION_TOOLS
 
         #region GUILAYOUT
         GUIStyle _GUIStyle;
-        Vector2 scrollPos = new Vector2();
+        static Vector2 _ViewerScrollPos = new Vector2();
+        static Vector2 _CretorScrollPos = new Vector2();
         #endregion
 
         #region SPLIT_VIEW
@@ -170,35 +171,36 @@ namespace CREATION_TOOLS
                             GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
                         }
                     }
-                 
+                    if (GUILayout.Button("DELETE"))
+                    {
+                        DeleteQuest(i);
+                    }
                     GUILayout.Label("=================================================================================================================", EditorStyles.boldLabel);
                     GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
-
+                    
                     tQuestData.index = _QuestData.Count;
-
                 }
 
                 _ViewerFold[i] = tFold;
                 _QuestData[i] = tQuestData;
             }
-
             GUILayout.FlexibleSpace();
-            if (GUILayout.Button("Save Work"))
+            GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+            if (GUILayout.Button("SAVE WORK"))
             {
                 Save();
             }
             GUILayout.EndVertical();
+        
         }
 
         void DrawQuestEditor()
         {
-
-            scrollPos = GUILayout.BeginScrollView(scrollPos);
-
+            _CretorScrollPos = GUILayout.BeginScrollView(_CretorScrollPos);
             //Set Window Style
             _GUIStyle = new GUIStyle(GUI.skin.label);
             _GUIStyle.padding = new RectOffset(11, 22, 33, 44);
-
+            
             //Quest Struct
             GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
             GUILayout.Label("Fill the quest data.", EditorStyles.boldLabel);
@@ -288,7 +290,10 @@ namespace CREATION_TOOLS
             _ViewerFold.Add(new QUEST_FOLDING());
         }
 
-        // Start is called before the first frame update
+        public static void DeleteQuest(int index) {
+            _QuestData.RemoveAt(index);
+        }
+
         public static void Save()
         {
             if (!File.Exists(Application.dataPath + _OUTPUT_PATH))
