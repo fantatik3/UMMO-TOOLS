@@ -157,6 +157,7 @@ namespace CREATION_TOOLS
                             GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
                             GUILayout.Label("Objetive " + (jj + 1) + ":", EditorStyles.boldLabel);
                             tQuestData.objetiveData[jj].objetive = (QUEST_OBJETIVES)EditorGUILayout.EnumPopup("Type " + (jj + 1) + ":", tQuestData.objetiveData[jj].objetive);
+                            tQuestData.objetiveData[jj].value = EditorGUILayout.IntField("Value:", tQuestData.objetiveData[jj].value);
                             tQuestData.objetiveData[jj].amount = EditorGUILayout.IntField("Req. Amount:", tQuestData.objetiveData[jj].amount);
 
                         }
@@ -250,6 +251,7 @@ namespace CREATION_TOOLS
                     GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
                     GUILayout.Label("Objetive " + (i + 1) + ":", EditorStyles.boldLabel);
                     _NewQuestData.objetiveData[i].objetive = (QUEST_OBJETIVES)EditorGUILayout.EnumPopup("Type " + (i + 1) + ":", _NewQuestData.objetiveData[i].objetive);
+                    _NewQuestData.objetiveData[i].value = EditorGUILayout.IntField("Value:", _NewQuestData.objetiveData[i].value);
                     _NewQuestData.objetiveData[i].amount = EditorGUILayout.IntField("Req. Amount:", _NewQuestData.objetiveData[i].amount);
 
                 }
