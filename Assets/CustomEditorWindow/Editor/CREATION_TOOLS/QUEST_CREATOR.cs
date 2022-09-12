@@ -91,6 +91,11 @@ namespace CREATION_TOOLS
                 return;
             }
             GUILayout.BeginVertical();
+
+            GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
+            GUILayout.Label("Quest List:", EditorStyles.boldLabel);
+            GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
+
             for (int i = 0; i < _QuestData.Count; i++)
             {
                 tFold = _ViewerFold[i];
@@ -107,11 +112,7 @@ namespace CREATION_TOOLS
                 GUILayout.EndHorizontal();
                 if (tFold.QuestUnfolded)
                 {
-                    //Quest Struct
                     GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
-                    GUILayout.Label("Quest List:", EditorStyles.boldLabel);
-                    GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
-
                     tQuestData.name = Encoding.ASCII.GetBytes(EditorGUILayout.TextField("Quest Name:", Encoding.ASCII.GetString(tQuestData.name) + "\0"));
 
                     GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
