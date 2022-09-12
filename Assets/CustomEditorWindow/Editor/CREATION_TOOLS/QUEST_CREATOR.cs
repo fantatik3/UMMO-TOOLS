@@ -19,9 +19,8 @@ namespace CREATION_TOOLS
         };
 
         #region GUILAYOUT
-        GUIStyle _GUIStyle;
         static Vector2 _ViewerScrollPos = new Vector2();
-        static Vector2 _CretorScrollPos = new Vector2();
+        static Vector2 _CreatorScrollPos = new Vector2();
         #endregion
 
         #region SPLIT_VIEW
@@ -48,7 +47,7 @@ namespace CREATION_TOOLS
             QUEST_CREATOR window = (QUEST_CREATOR)GetWindow(typeof(QUEST_CREATOR));
             window.Show();
             window.title = "QUEST CREATION TOOL";
-
+            _ViewerScrollPos.x = window.position.x / 2;
             Load();
             InitNewQuest();
         }
@@ -74,6 +73,7 @@ namespace CREATION_TOOLS
 
         void DrawQuestViewer()
         {
+
             QUEST_FOLDING tFold = new QUEST_FOLDING();
             QUEST_DATA tQuestData = new QUEST_DATA();
             if (_QuestData.Count < 1)
@@ -91,18 +91,25 @@ namespace CREATION_TOOLS
                 return;
             }
             GUILayout.BeginVertical();
-
             for (int i = 0; i < _QuestData.Count; i++)
             {
                 tFold = _ViewerFold[i];
                 tQuestData = _QuestData[i];
 
+                GUILayout.BeginHorizontal();
                 tFold.QuestUnfolded = EditorGUILayout.Foldout(tFold.QuestUnfolded, "Quest: " + Encoding.ASCII.GetString(_QuestData[i].name));
+                if (GUILayout.Button("DELETE"))
+                {
+                    DeleteQuest(i);
+                    GUILayout.EndHorizontal();
+                    continue;
+                }
+                GUILayout.EndHorizontal();
                 if (tFold.QuestUnfolded)
                 {
                     //Quest Struct
                     GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
-                    GUILayout.Label("Fill the quest data.", EditorStyles.boldLabel);
+                    GUILayout.Label("Quest List:", EditorStyles.boldLabel);
                     GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
 
                     tQuestData.name = Encoding.ASCII.GetBytes(EditorGUILayout.TextField("Quest Name:", Encoding.ASCII.GetString(tQuestData.name) + "\0"));
@@ -171,11 +178,6 @@ namespace CREATION_TOOLS
                             GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
                         }
                     }
-                    if (GUILayout.Button("DELETE"))
-                    {
-                        DeleteQuest(i);
-                    }
-                    GUILayout.Label("=================================================================================================================", EditorStyles.boldLabel);
                     GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
                     
                     tQuestData.index = _QuestData.Count;
@@ -196,10 +198,7 @@ namespace CREATION_TOOLS
 
         void DrawQuestEditor()
         {
-            _CretorScrollPos = GUILayout.BeginScrollView(_CretorScrollPos);
-            //Set Window Style
-            _GUIStyle = new GUIStyle(GUI.skin.label);
-            _GUIStyle.padding = new RectOffset(11, 22, 33, 44);
+            _CreatorScrollPos = GUILayout.BeginScrollView(_CreatorScrollPos);
             
             //Quest Struct
             GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
@@ -275,8 +274,7 @@ namespace CREATION_TOOLS
 
             _NewQuestData.index = _QuestData.Count;
             GUILayout.FlexibleSpace();
-
-            if (GUILayout.Button("Insert Quest"))
+            if (GUILayout.Button("CREATE QUEST"))
             {
                 InsertQuest();
                 InitNewQuest();
@@ -288,18 +286,22 @@ namespace CREATION_TOOLS
         {
             _QuestData.Add(_NewQuestData);
             _ViewerFold.Add(new QUEST_FOLDING());
+            InitNewQuest();
         }
 
         public static void DeleteQuest(int index) {
             _QuestData.RemoveAt(index);
+            _ViewerFold.RemoveAt(index);
+
         }
 
         public static void Save()
         {
-            if (!File.Exists(Application.dataPath + _OUTPUT_PATH))
+            if (File.Exists(Application.dataPath + _OUTPUT_PATH))
             {
-                File.Create(Application.dataPath + _OUTPUT_PATH);
+                File.Delete(Path.Combine(Application.dataPath + OUTPUT_FOLDER, QUEST_FILE_NAME));        
             }
+            File.Create(Application.dataPath + _OUTPUT_PATH).Dispose();
 
             using FileStream fileStream = File.OpenWrite(Application.dataPath + _OUTPUT_PATH);
             using BinaryWriter bW = new(fileStream);
