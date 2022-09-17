@@ -28,8 +28,8 @@ namespace CREATION_TOOLS
         EditorGUISplitView verticalSplitView = new EditorGUISplitView(EditorGUISplitView.Direction.Vertical);
         #endregion
 
-        const string QUEST_FILE_NAME = "\\QUEST_OUTPUT.hex";
-        const string OUTPUT_FOLDER = "\\OUTPUT";
+        const string QUEST_FILE_NAME = "/QUEST_OUTPUT.hex";
+        const string OUTPUT_FOLDER = "/OUTPUT";
         static string _OUTPUT_PATH = OUTPUT_FOLDER + QUEST_FILE_NAME;
 
         static QUEST_DATA _NewQuestData = new QUEST_DATA();
