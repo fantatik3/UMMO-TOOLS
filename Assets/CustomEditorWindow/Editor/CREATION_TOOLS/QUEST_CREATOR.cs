@@ -292,7 +292,7 @@ namespace CREATION_TOOLS
             InitNewQuest();
         }
 
-        public static void DeleteQuest(int index) {
+        void DeleteQuest(int index) {
             _QuestData.RemoveAt(index);
             _ViewerFold.RemoveAt(index);
 
