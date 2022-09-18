@@ -46,7 +46,7 @@ namespace CREATION_TOOLS
             _QuestData.Clear();
             QUEST_CREATOR window = (QUEST_CREATOR)GetWindow(typeof(QUEST_CREATOR));
             window.Show();
-            window.title = "QUEST CREATION TOOL";
+            window.titleContent.text = "QUEST CREATION TOOL";
             _ViewerScrollPos.x = window.position.x / 2;
             Load();
             InitNewQuest();
