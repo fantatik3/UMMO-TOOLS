@@ -1,4 +1,4 @@
-namespace CREATION_TOOLS
+namespace CREATION_TOOLS_CORE
 {
     public enum GAME_CONFIG { 
     MAX_AVATAR_LEVEL = 145,
