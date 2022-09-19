@@ -24,6 +24,8 @@ namespace CREATION_TOOLS_CORE
             }
             static TERRAIN_CONFIG mTerrainData = new TERRAIN_CONFIG();
 
+            static GameObject meshContainer;
+
             EditorGUISplitView verticalSplitView = new EditorGUISplitView(EditorGUISplitView.Direction.Vertical);
 
             [MenuItem("UMMORPG Tools/Terrain/Generate New...")]
@@ -41,6 +43,8 @@ namespace CREATION_TOOLS_CORE
                 mTerrainData.scale = 0;
                 mTerrainData.octaves = 0;
                 mTerrainData.lacunarity = 0;
+
+                meshContainer = new GameObject("--- Tool Generated Terrains ---");
             }
             public void OnGUI()
             {
