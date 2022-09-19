@@ -5,22 +5,27 @@ using System.Collections.Generic;
 using System.Text;
 using System;
 
-namespace CREATION_TOOLS
+namespace CREATION_TOOLS_CORE
 {
-    public class TERRAIN_CREATOR : EditorWindow
+    namespace TOOLS
     {
-
-        [MenuItem("UMMORPG Tools/Terrain/Generate New...")]
-        static void Init()
+        public class TERRAIN_CREATOR : EditorWindow
         {
 
-        }
-        public void OnGUI()
-        {
-            DrawTool();
-        }
-        void DrawTool() {
-        
+            [MenuItem("UMMORPG Tools/Terrain/Generate New...")]
+            static void Init()
+            {
+
+            }
+            public void OnGUI()
+            {
+                DrawTool();
+            }
+            void DrawTool()
+            {
+
+            }
+
         }
     }
 }
