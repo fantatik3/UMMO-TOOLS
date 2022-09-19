@@ -15,7 +15,7 @@ namespace CREATION_TOOLS_CORE
             public struct TERRAIN_CONFIG
             {
                 public int seed;
-                public int MeshScale;
+                public float MeshScale;
                 public int sizeX;
                 public int sizeZ;
                 public float scale;
@@ -58,7 +58,30 @@ namespace CREATION_TOOLS_CORE
                 GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
                 GUILayout.Label("Create Terrain Mesh:", EditorStyles.boldLabel);
                 GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
-        
+
+                //Values here
+                GUILayout.Space((int)TOOL_CONFIG.HEADER_PADDING);
+                mTerrainData.seed = EditorGUILayout.IntField("Seed:", mTerrainData.seed);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
+                mTerrainData.MeshScale = EditorGUILayout.Slider("Mesh Scale:", mTerrainData.MeshScale, 0.0f, 100.0f);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
+                mTerrainData.sizeX = EditorGUILayout.IntField("SizeX:", mTerrainData.sizeX);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
+                mTerrainData.sizeZ = EditorGUILayout.IntField("SizeZ:", mTerrainData.sizeZ);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
+                mTerrainData.scale = EditorGUILayout.Slider("Scale:", mTerrainData.scale, 0.0f, 100.0f);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
+                mTerrainData.octaves = EditorGUILayout.IntField("Octaves:", mTerrainData.octaves);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
+                mTerrainData.lacunarity = EditorGUILayout.Slider("Lacunarity:", mTerrainData.lacunarity, 0.0f, 100.0f);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
                 GUILayout.FlexibleSpace();
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
                 if (GUILayout.Button("Generate"))
