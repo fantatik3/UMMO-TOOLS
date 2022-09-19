@@ -61,7 +61,7 @@ namespace CREATION_TOOLS_CORE
         
                 GUILayout.FlexibleSpace();
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
-                if (GUILayout.Button("Create"))
+                if (GUILayout.Button("Generate"))
                 {
                     CreateMeshFromParams();
                 }
@@ -69,6 +69,13 @@ namespace CREATION_TOOLS_CORE
             }
 
             void CreateMeshFromParams() {
+
+                //Locate/Create an empty object called Generated terrains or something to set as parent
+
+                //Create mesh and grab height from perlin noise etc
+                //https://docs.unity3d.com/ScriptReference/Mathf.PerlinNoise.html
+
+                //Spawn the mesh in the parent
                 Debug.Log("Mesh Creation Not Implemented...");
             }
         }
