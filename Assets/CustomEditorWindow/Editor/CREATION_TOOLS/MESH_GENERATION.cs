@@ -6,10 +6,19 @@ namespace CREATION_TOOLS_CORE
     {
         public static class MESH_GENERATION
         {
-            public static void CreateMeshFromData(TERRAIN_CONFIG terrainData)
-            {
+            public static TERRAIN_CONFIG mTerrainData = new TERRAIN_CONFIG();
 
-                //Locate/Create an empty object called Generated terrains or something to set as parent
+            public static void Init() {
+                mTerrainData.seed = 0;
+                mTerrainData.MeshScale = 100;
+                mTerrainData.sizeX = 50;
+                mTerrainData.sizeZ = 50;
+                mTerrainData.scale = 50;
+                mTerrainData.octaves = 5;
+                mTerrainData.lacunarity = 2;
+            }
+            public static void CreateMeshFromData(GameObject parent, TERRAIN_CONFIG terrainData)
+            {
 
                 //Create mesh and grab height from perlin noise etc
                 //https://docs.unity3d.com/ScriptReference/Mathf.PerlinNoise.html
