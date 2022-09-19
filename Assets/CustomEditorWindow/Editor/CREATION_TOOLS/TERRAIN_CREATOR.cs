@@ -44,7 +44,7 @@ namespace CREATION_TOOLS_CORE
                 MESH_GENERATION.mTerrainData.seed = EditorGUILayout.IntField("Seed:", MESH_GENERATION.mTerrainData.seed);
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
 
-                MESH_GENERATION.mTerrainData.MeshScale = EditorGUILayout.Slider("Mesh Scale:", MESH_GENERATION.mTerrainData.MeshScale, 0.0f, 100.0f);
+                MESH_GENERATION.mTerrainData.MeshScale = EditorGUILayout.Slider("Mesh Scale:", MESH_GENERATION.mTerrainData.MeshScale, 0.0f, 500.0f);
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
 
                 MESH_GENERATION.mTerrainData.sizeX = EditorGUILayout.IntField("SizeX:", MESH_GENERATION.mTerrainData.sizeX);
@@ -53,7 +53,7 @@ namespace CREATION_TOOLS_CORE
                 MESH_GENERATION.mTerrainData.sizeZ = EditorGUILayout.IntField("SizeZ:", MESH_GENERATION.mTerrainData.sizeZ);
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
 
-                MESH_GENERATION.mTerrainData.scale = EditorGUILayout.Slider("Scale:", MESH_GENERATION.mTerrainData.scale, 0.0f, 100.0f);
+                MESH_GENERATION.mTerrainData.scale = EditorGUILayout.Slider("Scale:", MESH_GENERATION.mTerrainData.scale, 0.0f, 500.0f);
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
 
                 MESH_GENERATION.mTerrainData.heightCurve = EditorGUILayout.CurveField("Curve:", MESH_GENERATION.mTerrainData.heightCurve);
