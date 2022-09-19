@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 
 namespace CREATION_TOOLS_CORE
 {
+
+    #region QUEST
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
     [Serializable]
     public struct QUEST_DATA
@@ -48,4 +50,19 @@ namespace CREATION_TOOLS_CORE
         public int amount;
         public float chance;
     }
+    #endregion QUEST
+
+    #region TERRAIN
+    public struct TERRAIN_CONFIG
+    {
+        public int seed;
+        public float MeshScale;
+        public int sizeX;
+        public int sizeZ;
+        public float scale;
+        public int octaves;
+        public float lacunarity;
+    }
+
+    #endregion TERRAIN
 }
