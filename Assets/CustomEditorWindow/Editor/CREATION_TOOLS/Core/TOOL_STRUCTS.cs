@@ -1,5 +1,6 @@
 using System;
 using System.Runtime.InteropServices;
+using UnityEngine;
 
 namespace CREATION_TOOLS_CORE
 {
@@ -60,6 +61,7 @@ namespace CREATION_TOOLS_CORE
         public int sizeX;
         public int sizeZ;
         public float scale;
+        public AnimationCurve heightCurve;
         public int octaves;
         public float lacunarity;
     }

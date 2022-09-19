@@ -5,35 +5,32 @@ namespace CREATION_TOOLS_CORE
 {
     namespace TOOLS
     {
-        
-        public class TERRAIN_CREATOR : EditorWindow
+        public class TERRAIN_GENERATOR : EditorWindow
         {
             public static GameObject meshContainer;
 
+            static Vector2 _ViewerScrollPos = new Vector2();
             EditorGUISplitView verticalSplitView = new EditorGUISplitView(EditorGUISplitView.Direction.Vertical);
 
-            [MenuItem("UMMORPG Tools/Terrain/Generate New...")]
+            [MenuItem("UMMORPG Tools/Terrain/New...")]
             static void Init()
             {
-
-                TERRAIN_CREATOR window = (TERRAIN_CREATOR)GetWindow(typeof(TERRAIN_CREATOR));
+                TERRAIN_GENERATOR window = (TERRAIN_GENERATOR)GetWindow(typeof(TERRAIN_GENERATOR));
                 window.Show();
-                window.titleContent.text = "MAP GENERATION TOOL";
-
-                if (GameObject.Find("--- Tool Generated Terrains ---") == null)
-                {
-                    meshContainer = new GameObject("--- Tool Generated Terrains ---");
-                }
+                window.titleContent.text = "TERRAIN GENERATION (PERLIN NOISE)";
+                _ViewerScrollPos.x = window.position.x / 2;
+                MESH_GENERATION.Init();
             }
+       
             public void OnGUI()
             {
-                verticalSplitView.BeginSplitView();
+                GUILayout.BeginScrollView(_ViewerScrollPos);
+                GUILayout.BeginVertical();
                 DrawTool();
-                verticalSplitView.Split();
-                verticalSplitView.EndSplitView();
-                Repaint();
-
+                GUILayout.EndVertical();
+                GUILayout.EndScrollView();
             }
+
             void DrawTool()
             {
                 GUILayout.BeginVertical();
@@ -59,6 +56,9 @@ namespace CREATION_TOOLS_CORE
                 MESH_GENERATION.mTerrainData.scale = EditorGUILayout.Slider("Scale:", MESH_GENERATION.mTerrainData.scale, 0.0f, 100.0f);
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
 
+                MESH_GENERATION.mTerrainData.heightCurve = EditorGUILayout.CurveField("Curve:", MESH_GENERATION.mTerrainData.heightCurve);
+                GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
+
                 MESH_GENERATION.mTerrainData.octaves = EditorGUILayout.IntField("Octaves:", MESH_GENERATION.mTerrainData.octaves);
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
 
@@ -69,10 +69,11 @@ namespace CREATION_TOOLS_CORE
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
                 if (GUILayout.Button("Generate"))
                 {
-                    MESH_GENERATION.CreateMeshFromData(meshContainer, MESH_GENERATION.mTerrainData);
+                    MESH_GENERATION.CreateMeshFromData(meshContainer);
                 }
                 GUILayout.EndVertical();
             }
+
         }
     }
 }
