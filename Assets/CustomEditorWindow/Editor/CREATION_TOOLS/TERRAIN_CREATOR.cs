@@ -1,9 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using System.IO;
-using System.Collections.Generic;
-using System.Text;
-using System;
 
 namespace CREATION_TOOLS_CORE
 {
@@ -11,20 +7,9 @@ namespace CREATION_TOOLS_CORE
     {
         public class TERRAIN_CREATOR : EditorWindow
         {
-            //members for tool
-            public struct TERRAIN_CONFIG
-            {
-                public int seed;
-                public float MeshScale;
-                public int sizeX;
-                public int sizeZ;
-                public float scale;
-                public int octaves;
-                public float lacunarity;
-            }
-            static TERRAIN_CONFIG mTerrainData = new TERRAIN_CONFIG();
+            public static TERRAIN_CONFIG mTerrainData = new TERRAIN_CONFIG();
 
-            static GameObject meshContainer;
+            public static GameObject meshContainer;
 
             EditorGUISplitView verticalSplitView = new EditorGUISplitView(EditorGUISplitView.Direction.Vertical);
 
@@ -93,20 +78,9 @@ namespace CREATION_TOOLS_CORE
                 GUILayout.Space((int)TOOL_CONFIG.ELEMENT_PADDING);
                 if (GUILayout.Button("Generate"))
                 {
-                    CreateMeshFromParams();
+                    MESH_GENERATION.CreateMeshFromData(mTerrainData);
                 }
                 GUILayout.EndVertical();
-            }
-
-            void CreateMeshFromParams() {
-
-                //Locate/Create an empty object called Generated terrains or something to set as parent
-
-                //Create mesh and grab height from perlin noise etc
-                //https://docs.unity3d.com/ScriptReference/Mathf.PerlinNoise.html
-
-                //Spawn the mesh in the parent
-                Debug.Log("Mesh Creation Not Implemented...");
             }
         }
     }
