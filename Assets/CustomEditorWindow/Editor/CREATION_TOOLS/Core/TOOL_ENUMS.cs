@@ -32,7 +32,7 @@ namespace CREATION_TOOLS_CORE
 
     public enum QUEST_NPC_TYPE
     {
-        Quest_Manager = 0,
+        Town_Quest_Manager = 0,
         Hideout_Quest_Manager = 1
     };
 
